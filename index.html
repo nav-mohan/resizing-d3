@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>resizing d3</title>
+	<script src = "d3v4.js"></script>
+	<style type="text/css">
+	.svg-container {
+	  display: inline-block;
+	  position: relative;
+	  width: 100%;
+	  padding-bottom: 100%; /* aspect ratio */
+	  vertical-align: top;
+	  overflow: hidden;
+	}
+	.svg-content-responsive {
+	  display: inline-block;
+	  position: absolute;
+	  top: 0px;
+	  left: 0;
+	}
+
+	svg .rect {
+	  fill: gold;
+	  stroke: steelblue;
+	  stroke-width: 5px;
+	}
+	</style>
+</head>
+<body>
+	<div id = "chartID"></div>
+
+	<script type="text/javascript">
+	d3.select("div#chartID")
+	   .append("div")
+	   // Container class to make it responsive.
+	   .classed("svg-container", true) 
+	   .append("svg")
+	   // Responsive SVG needs these 2 attributes and no width and height attr.
+	   .attr("preserveAspectRatio", "xMinYMin meet")
+	   .attr("viewBox", "0 0 600 400")
+	   // Class to make it responsive.
+	   .classed("svg-content-responsive", true)
+	   // Fill with a rectangle for visualization.
+	   .append("rect")
+	   .classed("rect", true)
+	   .attr("width", 600)
+	   .attr("height", 400);
+	</script>
+
+
+</body>
+</html>
